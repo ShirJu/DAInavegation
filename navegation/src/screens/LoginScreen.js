@@ -1,27 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput} from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
+import Screen01 from './Screen01';
 
-const LoginScreen = ({navegation}) =>{
-    const[nombre, setNombre] = useState('');
-    const[clave, setClave] = useState('');
+export default function LoginScreen({ navigation }){
 
-    const handleLogin = () => {
-        console.log('login');
-    }
-}
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [clave, setClave] = useState('');
 
+  const handleLogin = () => {
+    console.log('login');
+    navigation.navigate('Screen01');
+  }
 
-
-
-export default function App() {
   return (
-    <SafeAreaView rstyle={styles.container}>
-    <View >     
+    <View style={styles.container}>     
+
       <StatusBar style="auto" />
-      
+
       <Text style={styles.consigna}> Ingrese los datos del egresado... {'\n'}</Text>
 
       <Text> Nombre: {'\n'}</Text>
@@ -29,6 +28,7 @@ export default function App() {
       <TextInput
         style={styles.input}   
         placeholder= "Nombre..."
+        onChangeText={setNombre}
       />
 
       <Text> Apellido: {'\n'}</Text>
@@ -36,6 +36,7 @@ export default function App() {
       <TextInput
         style={styles.input}   
         placeholder= "Apellido..."
+        onChangeText={setApellido}
       />   
 
       <Text> Clave: {'\n'}</Text>
@@ -43,15 +44,14 @@ export default function App() {
       <TextInput
         style={styles.input}   
         placeholder= "Clave"
+        onChangeText={setClave}
       />  
 
+      <TouchableOpacity onPress={()=> handleLogin()}><Text>Ingresar</Text></TouchableOpacity>
+
     </View>
-
-  </SafeAreaView>
-
-  
+ 
 );
-
 }
 
 const styles = StyleSheet.create({

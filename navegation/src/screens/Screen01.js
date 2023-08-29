@@ -3,7 +3,7 @@ import { StyleSheet} from 'react-native';
 import { View, Text } from 'react';
 
 
-const Screen01 = ({navigation}) => {
+export default function Screen01({navigation}){
   return (
     <View>
         <Text>Screen01</Text>
@@ -19,5 +19,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-export default Screen01;
