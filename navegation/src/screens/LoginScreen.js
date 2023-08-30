@@ -1,9 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import 'react-native-gesture-handler';
-import { createStackNavigator } from '@react-navigation/stack';
-import Screen01 from './Screen01';
 
 export default function LoginScreen({ navigation }){
 
@@ -13,7 +11,13 @@ export default function LoginScreen({ navigation }){
 
   const handleLogin = () => {
     console.log('login');
-    navigation.navigate('Screen01');
+
+    //if (nombre == 'shirly') {
+      navigation.navigate('Screen01');
+    /*} else {
+      alert("El nombre, la contraseña o la clave son incorrectas. Porfavor intentelo nuevamente");
+    }*/
+    
   }
 
   return (
@@ -21,9 +25,11 @@ export default function LoginScreen({ navigation }){
 
       <StatusBar style="auto" />
 
+      <Image style={styles.imagen} source={require('C:/DAInavegation/navegation/assets/backgrounds/imagen.png')} />
+
       <Text style={styles.consigna}> Ingrese los datos del egresado... {'\n'}</Text>
 
-      <Text> Nombre: {'\n'}</Text>
+      <Text style={styles.text}> Nombre: </Text>
 
       <TextInput
         style={styles.input}   
@@ -31,7 +37,7 @@ export default function LoginScreen({ navigation }){
         onChangeText={setNombre}
       />
 
-      <Text> Apellido: {'\n'}</Text>
+      <Text style={styles.text}> Apellido:</Text>
 
       <TextInput
         style={styles.input}   
@@ -39,7 +45,7 @@ export default function LoginScreen({ navigation }){
         onChangeText={setApellido}
       />   
 
-      <Text> Clave: {'\n'}</Text>
+      <Text style={styles.text}> Clave: </Text>
 
       <TextInput
         style={styles.input}   
@@ -47,7 +53,7 @@ export default function LoginScreen({ navigation }){
         onChangeText={setClave}
       />  
 
-      <TouchableOpacity onPress={()=> handleLogin()}><Text>Ingresar</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.boton} onPress={()=> handleLogin()}><Text style={styles.ingresar}>Ingresar</Text></TouchableOpacity>
 
     </View>
  
@@ -57,30 +63,37 @@ export default function LoginScreen({ navigation }){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#FFFFFF'
   },
-  backgroundImage:{
-    //flex: divide el espacio en la cantidad de flex que ponga
-    flex:1,
-    justifyContent: 'center'
+  imagen: {
+    width:100,
+    height:100
   },
   text:{
-    color: "#FF5733",
-    fontSize : 20,
-    backgroundColor: '#FFFFFF',
-    textAlign: 'center'
-    
+    color: "#5820DB",
+    fontSize : 20
   },
   input:{
     backgroundColor:'#ffffff',
-    borderWidth: 2
-    
+    borderWidth: 2,
+    height:50,
+    margin:5
   },
   consigna:{
-    color:'#FFFFFF',
-    fontSize : 15,
+    color:'#0C80E8',
+    fontSize : 30,
     textAlign: 'center'
   },
+  boton:{
+    backgroundColor:'#0C80E8',
+    borderWidth: 2,
+    height:50,
+    margin:5,
+    alignContent: 'a',
+    width:100,
+    alignContent: 'center'
+  },
+  ingresar:{
+    color:'#0C80E8'
+  }
 });

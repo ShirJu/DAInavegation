@@ -16,29 +16,31 @@ export default function App() {
       <Stack.Navigator initialRouteName="LoginScreen">
 
         <Stack.Screen 
-          name="LoginSreen" 
+          name="LoginScreen" 
           component={LoginScreen} 
           options={{title:'Menu', headerStyle: {backgroundColor:'#ffff'}}}
+          
         />
         
         <Stack.Screen 
           name="Screen01" 
-          component={Screen01} 
-          options={{title:'Screen01', headerStyle: {backgroundColor:'#20448e'}}}
+          component={Screen01}
+          options={{headerTitle: 'Screen01'}}
         />
         
         
         <Stack.Screen 
           name="Screen02" 
           component={Screen02} 
-          options={{title:'Screen02', headerStyle: {backgroundColor:'#2be67c'}}}
+          options={{title:'Screen02'}}
         />
 
         <Stack.Screen 
           name="Screen03" 
           component={Screen03} 
-          options={{title:'Screen03', headerStyle: {backgroundColor:'#ee4109'}}}
+          options={{title:'Screen03'}}
         />
+        
 
       </Stack.Navigator>
     </NavigationContainer>

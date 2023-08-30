@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet} from 'react-native';
-import { View, Text } from 'react';
+import { StyleSheet, View, Text} from 'react-native';
+import Menu from '../components/Menu';
 
-
-const Screen03 = ({navigation}) => {
+export default function Screen03(){
   return (
-    <View>
-        <Text>Screen03</Text>
+    <View style={styles.container}>
+        <Text style={styles.text}>Screen03</Text>
+        <Menu></Menu>
     </View>
   );
 };
@@ -14,10 +14,14 @@ const Screen03 = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#ee4109',
+    alignText: 'center',
+  },
+  text: {
+    color: "#9BCDF4",
+    fontSize : 20,
+    textAlign: 'center',
+    marginTop:350
+
   },
 });
-
-export default Screen03;
