@@ -7,12 +7,12 @@ export default function Menu({ navigation }){
     const irScreen01 = () => {
         navigation.navigate('Screen01');
     }
-    
-      const irScreen02 = () => {
+
+    const irScreen02 = () => {
         navigation.navigate('Screen02');
     }
 
-      const irScreen03 = () => {
+    const irScreen03 = () => {
         navigation.navigate('Screen03');
     }
     

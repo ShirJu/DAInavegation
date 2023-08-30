@@ -25,7 +25,8 @@ export default function App() {
         <Stack.Screen 
           name="Screen01" 
           component={Screen01}
-          options={{headerTitle: 'Screen01'}}
+          options={{title:'Screen01'}}
+          
         />
         
         
@@ -41,6 +42,7 @@ export default function App() {
           options={{title:'Screen03'}}
         />
         
+        <Stack.Screen name="Menu" component={Menu} />
 
       </Stack.Navigator>
     </NavigationContainer>

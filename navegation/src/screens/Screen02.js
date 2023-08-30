@@ -6,7 +6,7 @@ export default function Screen02(){
   return (
     <View style={styles.container}>
         <Text style={styles.text}>Screen02</Text>
-        <Menu></Menu>
+        <Menu/>
     </View>
   );
 };
