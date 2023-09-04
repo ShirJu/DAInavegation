@@ -42,7 +42,7 @@ export default function App() {
           options={{title:'Screen03'}}
         />
         
-        <Stack.Screen name="Menu" component={Menu} />
+        
 
       </Stack.Navigator>
     </NavigationContainer>

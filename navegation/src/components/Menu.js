@@ -18,7 +18,7 @@ export default function Menu({ navigation }){
     
 
     return (
-        <View>
+        <View style={styles.container}>
 
         <TouchableOpacity style={styles.button} onPress={()=> irScreen01()}>
         <Text>1</Text>
@@ -37,13 +37,24 @@ export default function Menu({ navigation }){
 }
 
 const styles = StyleSheet.create({
+    container:{
+        display:"flex",
+        backgroundColor:'#FFFFFF',
+        flexDirection: "row",
+        alignItems:"center",
+        justifyContent:"center",
+        width:"100%",
+        height:55,
+        position:"absolute",
+        bottom:0
+    },
     button: {
-        backgroundColor: '#2196F3', // Color de fondo del botón
-        alignItems: 'center',
-        padding: 10,
-        marginBottom: 10,
-        borderRadius: 5,
-        borderBlockColor:'#0000'
+        width:"33%",
+        height:"100%",
+        display:"flex",
+        flexDirection: "row",
+        justifyContent:"center",
+        padding:11
     },
   });
 

@@ -12,11 +12,14 @@ export default function LoginScreen({ navigation }){
   const handleLogin = () => {
     console.log('login');
 
-    //if (nombre == 'shirly') {
+    if ((nombre == 'shirly') && (apellido == 'raiter') && (clave == 'hola')){
+
       navigation.navigate('Screen01');
-    /*} else {
+
+    } else {
+
       alert("El nombre, la contraseña o la clave son incorrectas. Porfavor intentelo nuevamente");
-    }*/
+    }
     
   }
 
@@ -25,9 +28,9 @@ export default function LoginScreen({ navigation }){
 
       <StatusBar style="auto" />
 
-      <Image style={styles.imagen} source={require('C:/DAInavegation/navegation/assets/backgrounds/imagen.png')} />
+      <Image style={styles.imagen} source={require('C:/DAInavegation/navegation/assets/backgrounds/login.jpg')}/> 
 
-      <Text style={styles.consigna}> Ingrese los datos del egresado... {'\n'}</Text>
+      <Text style={styles.consigna}> Ingrese los datos del egresado... </Text>
 
       <Text style={styles.text}> Nombre: </Text>
 
@@ -49,11 +52,11 @@ export default function LoginScreen({ navigation }){
 
       <TextInput
         style={styles.input}   
-        placeholder= "Clave"
+        placeholder= "Clave..."
         onChangeText={setClave}
       />  
 
-      <TouchableOpacity style={styles.boton} onPress={()=> handleLogin()}><Text style={styles.ingresar}>Ingresar</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.boton} onPress={handleLogin}><Text style={styles.ingresar}>Ingresar</Text></TouchableOpacity>
 
     </View>
  
@@ -63,21 +66,25 @@ export default function LoginScreen({ navigation }){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFFFFF',
+    
   },
   imagen: {
-    width:100,
-    height:100
+    width:200,
+    height:200  
   },
   text:{
-    color: "#5820DB",
-    fontSize : 20
+    color: "#0C80E8",
+    fontSize : 15,
+    padding:8
   },
   input:{
     backgroundColor:'#ffffff',
     borderWidth: 2,
     height:50,
-    margin:5
+    margin:5,
+    borderRadius:50,
+    padding:10
   },
   consigna:{
     color:'#0C80E8',
@@ -89,11 +96,13 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     height:50,
     margin:5,
-    alignContent: 'a',
     width:100,
-    alignContent: 'center'
+    borderRadius:50,
+    padding:10,
+   
   },
   ingresar:{
-    color:'#0C80E8'
+    color:'#ffffff',
+    textAlign: 'center'
   }
 });

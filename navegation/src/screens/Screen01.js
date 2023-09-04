@@ -1,12 +1,20 @@
 import React from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 import Menu from '../components/Menu';
+import BotonReutilizable from '../components/BotonReutilizable';
 
-export default function Screen01(){
+export default function Screen01({ navigation }){
+ const handleOnPress = () =>  {
+navigation.navigate('LoginScreen')
+ }
   return (
     <View style={styles.container}>
         <Text style={styles.text}>Screen01</Text>
-        <Menu />
+        <BotonReutilizable
+          onPress={handleOnPress} 
+          style={styles.logoutDiferente} 
+          texto="Ir a Inicio Sesion" />
+        <Menu navigation={ navigation }/>
     </View>
   );
 };
@@ -18,7 +26,7 @@ const styles = StyleSheet.create({
     alignText: 'center',
   },
   text: {
-    color: "#9BCDF4",
+    color: '#FFFFFF',
     fontSize : 20,
     textAlign: 'center',
     marginTop:350
