@@ -3,20 +3,26 @@ import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LoginScreen from '../screens/LoginScreen';
 
+import UsuarioService from '../components/UsuarioService';
+
 const SplashScreen=()=>{ 
     console.log('splashScreen');
 
     const navigation = useNavigation();
 
     useEffect(()=>{ 
-
-        const automaticlogin = async () => {
-            const isAuthenticated = await AuthManager.checkCredentials();
-        }
         const onLoad=async()=>{ 
             await new Promise(resolve=>setTimeout(resolve,3000)); 
-            navigation.navigate('LoginScreen');
+
+            const isAuthenticated = await UsuarioService.obtenerCredenciales();
+    
         }; 
+        /*
+        const automaticlogin = async () => {
+            const isAuthenticated = await UsuarioService.obtenerCredenciales();
+        }
+        */
+       
 
         onLoad();
         

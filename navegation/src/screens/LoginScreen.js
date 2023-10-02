@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert} from 'react-native';
 import React, {useState} from 'react';
 import 'react-native-gesture-handler';
+import UsuarioService from '../components/UsuarioService';
 
 export default function LoginScreen({ navigation }){
 
@@ -9,16 +10,17 @@ export default function LoginScreen({ navigation }){
   const [apellido, setApellido] = useState('');
   const [clave, setClave] = useState('');
 
-  const handleLogin = () => {
+  const handleLogin =  async () => {
     console.log('login');
 
-    if ((nombre == 'shirly') && (apellido == 'raiter') && (clave == 'hola')){
+    const isValid = await UsuarioService.login(nombre, clave);
 
+    if (isValid){
+      await UsuarioService.almacenarCredenciales(nombre,clave);
       navigation.navigate('Screen01');
 
     } else {
-
-      alert("El nombre, la contraseña o la clave son incorrectas. Porfavor intentelo nuevamente");
+      Alert.alert("El nombre, la contraseña o la clave son incorrectas. Porfavor intentelo nuevamente");
     }
     
   }
