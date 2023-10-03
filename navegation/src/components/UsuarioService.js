@@ -1,11 +1,10 @@
 //npmi@react-native-async-storage/async-storage 
 //Definicionesdeconstantes. 
-import { AsyncStorage } from 'react-native';
-
+import AsyncStorage  from '@react-native-async-storage/async-storage';
 import 'react-native-gesture-handler';
 
-const USERNAME_KEY = 'LOGIN_username';
-const PASSWORD_KEY = 'LOGIN_password';
+const USERNAME_KEY = 'Shirly';
+const PASSWORD_KEY = 'Jusid';
 
 class UsuarioService {
     static login = async (userName, password) => {
@@ -72,11 +71,14 @@ class UsuarioService {
 
           await AsyncStorage.setItem(USERNAME_KEY,username);
           await AsyncStorage.setItem(PASSWORD_KEY,password);
+          returnValue=true;
         } catch(error){
 
           console.error('Error al almacenar en el asyncStorage')
         }
+        return returnValue;
       }; 
+
       static eliminarCredenciales=async()=>{
 
         console.log('UsuarioService.eliminarCredenciales');
