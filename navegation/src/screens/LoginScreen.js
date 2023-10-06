@@ -5,6 +5,7 @@ import 'react-native-gesture-handler';
 import UsuarioService from '../components/UsuarioService';
 
 export default function LoginScreen({ navigation }){
+  let usuarioService = new UsuarioService();
 
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
@@ -13,10 +14,10 @@ export default function LoginScreen({ navigation }){
   const handleLogin =  async () => {
     console.log('login');
 
-    const isValid = await UsuarioService.login(nombre, clave);
+    const isValid = await usuarioService.login(nombre, clave);
 
-    if (isValid){
-      await UsuarioService.almacenarCredenciales(nombre,clave);
+   if (isValid){
+      await usuarioService.almacenarCredenciales(nombre,clave);
       navigation.navigate('Screen01');
 
     } else {
