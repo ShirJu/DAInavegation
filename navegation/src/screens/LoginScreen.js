@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import 'react-native-gesture-handler';
 import UsuarioService from '../components/UsuarioService';
+import MessageConstants from '../constants/MessageConstants';
 
 export default function LoginScreen({ navigation }){
   let usuarioService = new UsuarioService();
@@ -21,10 +22,12 @@ export default function LoginScreen({ navigation }){
       navigation.navigate('Screen01');
 
     } else {
-      Alert.alert("El nombre, la contraseña o la clave son incorrectas. Porfavor intentelo nuevamente");
+      Alert.alert(MessageConstants.MSG_USUARIO_O_CLAVE_INVALIDA);
     }
     
   }
+
+  const passwordRef=useRef();
 
   return (
     <View style={styles.container}>     
@@ -36,27 +39,19 @@ export default function LoginScreen({ navigation }){
       <Text style={styles.consigna}> Ingrese los datos del egresado... </Text>
 
       <Text style={styles.text}> Nombre: </Text>
-
       <TextInput
         style={styles.input}   
         placeholder= "Nombre..."
         onChangeText={setNombre}
+        onSubmitEditing={ ()=> {passwordRef.current.focus(); }}
       />
 
-      <Text style={styles.text}> Apellido:</Text>
-
-      <TextInput
-        style={styles.input}   
-        placeholder= "Apellido..."
-        onChangeText={setApellido}
-      />   
-
       <Text style={styles.text}> Clave: </Text>
-
       <TextInput
         style={styles.input}   
         placeholder= "Clave..."
         onChangeText={setClave}
+        ref={passwordRef}
       />  
 
       <TouchableOpacity style={styles.boton} onPress={handleLogin}><Text style={styles.ingresar}>Ingresar</Text></TouchableOpacity>

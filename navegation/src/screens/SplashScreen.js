@@ -5,12 +5,10 @@ import UsuarioService from '../components/UsuarioService';
 export default function SplashScreen({navigation}){ 
     console.log('splashScreen');
     let usuarioService = new UsuarioService();
-    const onLoad = async() => { 
+    const loginInicial = async() => { 
         
         if (usuarioService.automaticlogin()) {
-            navigation.navigate('Screen01');
-             
-                
+            navigation.navigate('Screen01'); 
         } else {
                 
             navigation.navigate('LoginScreen'); 
@@ -19,7 +17,7 @@ export default function SplashScreen({navigation}){
 
     useEffect(()=>{ 
         
-     setTimeout(onLoad,3000); 
+     setTimeout(loginInicial,3000); 
         
     },[])
 

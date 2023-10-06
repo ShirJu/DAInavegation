@@ -1,19 +1,25 @@
 import React from 'react';
-import { StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text,Alert} from 'react-native';
 import Menu from '../components/Menu';
 import BotonReutilizable from '../components/BotonReutilizable';
+import AsyncStorage  from '@react-native-async-storage/async-storage';
+import UsuarioService from '../components/UsuarioService';
+
+let usuarioService = new UsuarioService();
 
 export default function Screen01({ navigation }){
- const handleOnPress = () =>  {
-navigation.navigate('LoginScreen')
- }
+
+  const butoonAsyncStorage = async() => {
+    let contenido = await usuarioService.obtenerCredenciales();
+    Alert.alert("El contenido del AsyncStorage es: " , JSON.stringify(contenido));
+  }
   return (
     <View style={styles.container}>
         <Text style={styles.text}>Screen01</Text>
-        <BotonReutilizable
-          onPress={handleOnPress} 
+          <BotonReutilizable
+          onPress={butoonAsyncStorage} 
           style={styles.logoutDiferente} 
-          texto="Ir a Inicio Sesion" />
+          texto="VER ASYNCSTORAGE" />
         <Menu navigation={ navigation }/>
     </View>
   );

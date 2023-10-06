@@ -4,16 +4,17 @@ import Menu from '../components/Menu';
 import BotonReutilizable from './../components/BotonReutilizable';
 
 export default function Screen03({navigation}){
-  const handleOnPress = () =>  {
-    navigation.navigate('Screen01')
-     }
+
+  const irInicio = () =>  {
+    navigation.navigate('LoginScreen');
+  }
   return (
     <View style={styles.container}>
         <Text style={styles.text}>Screen03</Text>
-        <BotonReutilizable 
-         onPress={handleOnPress} 
-         style={styles.logoutDiferente} 
-          texto="Ir a pantalla 1" />
+        <BotonReutilizable
+          onPress={irInicio} 
+          style={styles.logoutDiferente} 
+          texto="LOGOUT" />
         
         <Menu navigation={navigation}></Menu>
     </View>
