@@ -8,6 +8,7 @@ import * as React from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import 'react-native-gesture-handler';
+import { SubirVideo } from '../components/SubirVideo';
 
 export default function LoginScreen({ navigation }) {
   const video = React.useRef(null);
@@ -33,6 +34,7 @@ export default function LoginScreen({ navigation }) {
           }
         />
       </View>
+      < SubirVideo/>
     </View>
   );
 }
