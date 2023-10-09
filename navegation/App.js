@@ -7,7 +7,6 @@ import Screen01 from './src/screens/Screen01';
 import Screen02 from './src/screens/Screen02';
 import Screen03 from './src/screens/Screen03';
 import SplashScreen from './src/screens/SplashScreen';
-import Menu from './src/components/Menu';
 
 const Stack = createStackNavigator()
 
@@ -49,8 +48,6 @@ export default function App() {
           component={Screen03} 
           options={{title:'Screen03'}}
         />
-        
-        
 
       </Stack.Navigator>
     </NavigationContainer>

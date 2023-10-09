@@ -15,7 +15,6 @@ export default function Menu({ navigation }){
     const irScreen03 = () => {
         navigation.navigate('Screen03');
     }
-    
 
     return (
         <View style={styles.container}>
