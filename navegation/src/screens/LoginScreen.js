@@ -4,37 +4,54 @@ import { StatusBar } from 'expo-status-bar';
 import UsuarioService from '../components/UsuarioService';
 import MessageConstants from '../constants/MessageConstants';
 
-import * as React from 'react';
+//npm expo install expo-av nbiblioteca para el reproductor de video
+
+//npm install react-native-image-picker biblioteca  para seleccionar el video 
+
+import React, {useState} from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import 'react-native-gesture-handler';
-import { SubirVideo } from '../components/SubirVideo';
+import ImagePicker from 'react-native-image-picker';
+
 
 export default function LoginScreen({ navigation }) {
   const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
+  // creo el estado para la url del video a seleccionar
+  const [videoUri, setVideoUri] = useState(null);
+
+  //funcion que abre la galeria y selecciona un video
+  const openGallery = () => {
+    const options = {
+      title: 'Select Video',
+      mediaType: 'video',
+    };
+  
+    ImagePicker.launchImageLibrary(options, response => {
+      if (response.uri) {
+        setVideoUri(response.uri);
+      }
+    });
+  };
+
+
   return (
-    <View style={styles.container}>
+    <View>
+
+{videoUri && (
       <Video
-        ref={video}
-        style={styles.video}
-        source={{
-          uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-        }}
+        source={{ uri: videoUri }}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        resizeMode="cover"
+        shouldPlay
         useNativeControls
-        resizeMode={ResizeMode.CONTAIN}
-        isLooping
-        onPlaybackStatusUpdate={status => setStatus(() => status)}
+        style={{ width: 300, height: 300 }}
       />
-      <View style={styles.buttons}>
-        <Button
-          title={status.isPlaying ? 'Pause' : 'Play'}
-          onPress={() =>
-            status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-          }
-        />
-      </View>
-      < SubirVideo/>
+    )}
+
+    <Button title="Seleccionar Video" onPress={openGallery} />
     </View>
   );
 }
@@ -49,11 +66,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 320,
     height: 200,
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
