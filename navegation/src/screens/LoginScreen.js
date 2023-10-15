@@ -7,12 +7,13 @@ import MessageConstants from '../constants/MessageConstants';
 //npm expo install expo-av nbiblioteca para el reproductor de video
 
 //npm install react-native-image-picker biblioteca  para seleccionar el video 
+//version react-native@0.72.5
 
 import React, {useState} from 'react';
 import { View, StyleSheet, Button } from 'react-native';
-import { Video, ResizeMode } from 'expo-av';
+import { Video } from 'expo-av';
 import 'react-native-gesture-handler';
-import ImagePicker from 'react-native-image-picker';
+import imagePicker from 'react-native-image-picker';
 
 
 export default function LoginScreen({ navigation }) {
@@ -24,13 +25,22 @@ export default function LoginScreen({ navigation }) {
   const openGallery = () => {
     const options = {
       title: 'Select Video',
-      mediaType: 'video',
+      storageOptions:{
+        skipBackup:true,
+        path:'videos',
+      }
     };
   
-    ImagePicker.launchImageLibrary(options, response => {
-      if (response.uri) {
-        setVideoUri(response.uri);
+    imagePicker.launchImageLibrary(options, response => {
+      if (response.errorCode) {
+        console.log(response.errorMessage)
+      } else if (response.didCancel){
+        console.log('El usuario canceló la selección')
+      } else {
+        const path = response.assets[0].uri
+        setVideoUri(path)
       }
+      
     });
   };
 
